@@ -20,11 +20,10 @@ const server = http.createServer((request, response) => {
       write("messages", newData);
       break;
 
-    case "/delete":
+      case "/delete":
 
-      write("messages", messages.splice(messages.findIndex((item, id) => item.id === id), 1));
-      break;
-
+        write("messages", messages.slice(0, messages.length - 1));
+        break;
   }
 
   response.end(JSON.stringify(read("messages")));
